@@ -1,0 +1,13 @@
+# Security checklist
+- Authentication and authorization are separate controls.
+- Replace demo passwords with OIDC/SSO; enable MFA and session revocation.
+- Enforce server-side RBAC and tenant/resource ownership before retrieval, caches, tools and exports.
+- Validate MIME/type/size, sanitize filenames, store uploads outside executable paths, scan malware.
+- Parameterize SQL; never execute model-generated SQL/code without a restricted validated tool.
+- Treat documents and retrieved pages as untrusted; ignore embedded instructions.
+- Public search queries must exclude confidential customer, employee and business data.
+- Keep secrets in a secret manager; never commit `.env`.
+- Encrypt transport and production storage; redact sensitive logs.
+- Protect against XSS, CSRF, SSRF, path traversal and unsafe deserialization.
+- Audit approvals and bind approval to the exact action payload/version.
+- Test deletion, backups, restore, prompt injection, permission denial and cross-tenant isolation.

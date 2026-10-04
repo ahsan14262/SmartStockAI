@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: smartstock
+      POSTGRES_USER: smartstock
+      POSTGRES_PASSWORD: change-me
+    volumes: [smartstock_db:/var/lib/postgresql/data]
+  app:
+    build: .
+    ports: ["8501:8501"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://smartstock:change-me@db:5432/smartstock
+    depends_on: [db]
+volumes:
+  smartstock_db:
